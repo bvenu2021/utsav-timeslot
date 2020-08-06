@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+        <form action="loginform">
+            <div class="container">
+                <div>
+                    <label for="username">Username</label>
+                    <input id="username" type="text" placeholder="Enter user name" name="username" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Enter password" name="password" required>
+                </div>
+                <div style="margin: 20px; padding: 10px; display: flex;">
+                    <button type="submit" style="margin-right: 3px;">Login</button>
+                    <button type="button" class="cancelbtn" style="margin-left: 3px;">Cancel</button>
+                </div>
+            </div>
+        </form>
+        <p id="message-1">{{messageOne}}</p>
+        <p id="message-2">{{messageTwo}}</p>
+    </div>
+
+    <div style="position: absolute; bottom: 20px">
+        {{>footer}}
+    </div>
+
+    <script src="/js/login.js"></script>
+</body>

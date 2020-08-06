@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RSS Utsav</title>
+    <link rel="icon" href="/img/bhagvadhwaj2.jpeg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="main-content">
+        {{>adminheader}}
+        <h3>IT Milan Welcomes You for Gurupuja Utsav</h3>
+        <p>Please register below</p>
+
+        <form>
+            <div>
+                <div class="container">
+                    <label for="prakhand">Prkhand</label>
+                    <input id="prakhand" type="text" placeholder="Pl. enter Prakhand Name" name="prakhand" required>
+                </div>
+                <div class="container">
+                    <label for="khand">Khand</label>
+                    <input id="khand" type="text" placeholder="Pl. enter Khand Name" name="khand" required>
+                </div>
+                <div class="container">
+                    <label for="valay">Valay</label>
+                    <input id="valay" type="text" placeholder="Pl. enter Valay Name" name="valay" required>
+                </div>
+                <div class="container">
+                    <label for="milan">Milan</label>
+                    <input id="milan" type="text" placeholder="Pl. enter Milan Name" name="milan" required>
+                </div>
+                {{!-- <div class="container">
+                    <label for="utsav">Utsav Date</label>
+                    <input id="uDate" type="datetime-local" placeholder="select date" name="utsavdate" required>
+                </div> --}}
+                <div class="container">
+                    <label for="uStartTime">Utsav Start Time</label>
+                    <input id="uStartTime" type="datetime-local" placeholder="select time" name="utsavstarttime" required>
+                </div>
+                <div class="container">
+                    <label for="uEndTime">Utsav End Time</label>
+                    <input id="uEndTime" type="datetime-local" placeholder="Select time for duration" name="utsavendtime" required>
+                </div>
+                <div class="container">
+                    <label for="venue">Utsav Venue</label>
+                    <input id="uVenue" type="text" placeholder="Pl. enter Address of the venue" name="venue" required>
+                </div>
+
+                <button style="margin: 60px; padding: 10px; display: flex">Submit</button>
+            </div>
+
+        </form>
+
+        <p id="message-1">{{messageOne}}</p>
+        <p id="message-2">{{messageTwo}}</p>
+    </div>
+
+    {{>footer}}
+    <script src="/js/admin.js"></script>
+</body>
+
+</html>

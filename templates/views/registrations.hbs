@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RSS Utsav</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            border: 1;
+        }
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+
+        <div id="regData1">
+            <form id="regdata">
+                <table id="data_tab">
+                    <tr>
+                        <th>Name</th>
+                        <th>contact</th>
+                        <th>Milan</th>
+                        <th>TimeSlot</th>
+                    </tr>
+                </table>
+            </form>
+            <script>
+                var regData = {{{ data }}}
+                regData_table = document.getElementById('data_tab')
+                regData.forEach(myFunction)
+
+                function myFunction(item, index) {
+                    regData_table.innerHTML += '<tr><td>' + item.name + '</td><td>' + item.contact + '</td><td>' + item.milan + '</td><td>' + item.timeslot + '</td></tr>'
+                }
+            </script>
+        </div>
+    </div>
+
+    {{>footer}}
+</body>
+
+</html>

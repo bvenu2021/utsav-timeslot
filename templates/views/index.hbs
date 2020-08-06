@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RSS Utsav</title>
+    <link rel="icon" href="/img/bhagvadhwaj2.jpeg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+        <h3>IT Milan Welcomes You for Gurupuja Utsav</h3>
+        <p>Please register below</p>
+
+        <form>
+            <div>
+                <div>
+                    <label for="name" style="margin-right: 2px;">Name </label>
+                    <input id="name" placeholder="Pl. enter your name">
+                </div>
+                <div>
+                    <label for="contact">Mobile</label>
+                    <input id="contact" type="Mobile" placeholder="+91">
+                </div>
+                <div style="margin-top: 10px; margin-left: -10px; padding: 8px; display: flex">
+                    <div style="margin: 3px; padding-right: 10px;">
+                        <label for="Valay" style="margin-right: 2px;">Valay</label>
+                        <select name="Valays" id="Valays" onchange="selectMilans(this.value);">
+                            <option value="" disabled selected>Select</option>
+                        </select>
+                    </div>
+
+                    <div style="margin: 3px; padding-left: 10px;">
+                        <label for="Milan" style="margin-right: 2px;">Milan</label>
+                        <select name="Milans" id="Milans">
+                            <option value="" disabled selected>Select</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <button style="margin: 60px; padding: 10px; display: flex">Submit</button>
+            </div>
+
+        </form>
+
+        <p id="message-1">{{messageOne}}</p>
+        <p id="message-2">{{messageTwo}}</p>
+    </div>
+
+    {{>footer}}
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
