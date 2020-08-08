@@ -80,8 +80,8 @@ utsavForm.addEventListener('submit', (e) => {
                 const uEnd = new Date(uDayTime.setMinutes(uDayTime.getMinutes() + 10)).toLocaleTimeString()
                 messageOne.textContent = 'Dhanyavad ' + data.user.name + ' ji for the registration.'
                 messageTwo.textContent = 'Please attned Gurupuja Utsav on : ' + uDay + ', between ' + uStart + ' and ' + uEnd + '.'
+                utsavForm.reset()
             }
-            utsavForm.reset()
         })
     })
 })

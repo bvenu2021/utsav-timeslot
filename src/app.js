@@ -40,33 +40,41 @@ app.get('/registration', (req, res) => {
     RegistrationData.countDocuments({ milan: mName }).then((count) => {
         nextSlot = Math.floor(count / 5) * 10
     }).catch((e) => {
-        res.status(500).send({ e })
+        return res.status(500).send({ e })
     }).then(() => {
         ITMilanUtsav.findOne({ milan: mName }).then((data) => {
-            console.log('From Config: ' + (data.utsavStartTime))
-            var newTimeslot = new Date(data.utsavStartTime)
-            newTimeslot.setMinutes(newTimeslot.getMinutes() + nextSlot)
-            console.log('Updated time: ' + newTimeslot.toString())
-            timeslot = newTimeslot.toString()
+            if (!data) {
+                return res.status(404).send({ error: mName + ' milan utsav is not configured yet! Please contact your Karyavah' })
+            } else {
+                var newTimeslot = new Date(data.utsavStartTime)
+                newTimeslot.setMinutes(newTimeslot.getMinutes() + nextSlot)
+                timeslot = newTimeslot.toString()
+            }
         }).catch((e) => {
-            res.status(500).send({ e })
+            return res.status(500).send({ e })
         }).then(() => {
-            var sgpuDate = new Date(timeslot)
-            console.log('Timeslot allotted: ' + sgpuDate.toString())
+            if (timeslot.length != 0) {
+                var sgpuDate = new Date(timeslot)
 
-            const user = new RegistrationData({
-                name: req.query.name,
-                contact: req.query.contact,
-                valay: req.query.valay,
-                milan: req.query.milan,
-                timeslot: sgpuDate.toString()
-            })
-            user.save().then(() => {
-                res.status(201).send({ user })
-            }).catch((e) => {
-                res.status(500).send({ e })
-            })
+                const user = new RegistrationData({
+                    name: req.query.name,
+                    contact: req.query.contact,
+                    valay: req.query.valay,
+                    milan: req.query.milan,
+                    timeslot: sgpuDate.toString()
+                })
+                user.save().then(() => {
+                    res.status(201).send({ user })
+                }).catch((e) => {
+                    return res.status(500).send({ e })
+                })
+            }
+        }).catch((e) => {
+            console.log(e)
+            return res.status(500).send(e)
         })
+    }).catch((e) => {
+        return res.status(500).send(e)
     })
 })
 
